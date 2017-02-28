@@ -83,7 +83,7 @@ public class SpUtils {
         String[] timeArrays = getSharePreferenceString(context, SP_CACHE_TOTAL, "").split("_");
         Log.e("returnTagTimeKey", "进入了");
         for (int i = 0; i < timeArrays.length; i++) {
-            Log.e("key和value的对应值",timeArrays[i]+"  "+getSharePreferenceString(context,timeArrays[i],""));
+            Log.e("key和value的对应值", timeArrays[i] + "  " + getSharePreferenceString(context, timeArrays[i], ""));
         }
 
         if (timeArrays.length == 0) {
@@ -92,13 +92,14 @@ public class SpUtils {
         }
         int oldestTimeIndex = 0;
         for (int i = 0; i < timeArrays.length; i++) {
-            if (!"".equals(getSharePreferenceString(context,timeArrays[i],""))) {
+            if (!"".equals(getSharePreferenceString(context, timeArrays[i], ""))) {
                 oldestTimeIndex = i;
                 break;
             }
         }
         for (int i = oldestTimeIndex + 1; i < timeArrays.length; i++) {
-            if (!"".equals(timeArrays[i]) && timeArrays[i].compareTo(timeArrays[oldestTimeIndex]) < 0) {
+            String valueStr = getSharePreferenceString(context, timeArrays[i], "");
+            if (!"".equals(valueStr) && valueStr.compareTo(getSharePreferenceString(context, timeArrays[oldestTimeIndex], "")) < 0) {
                 oldestTimeIndex = i;
             }
         }
